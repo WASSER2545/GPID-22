@@ -18,9 +18,9 @@ class MoCo(nn.Module):
     Build a MoCo model with a base encoder, a momentum encoder, and two MLPs
     https://arxiv.org/abs/1911.05722
     """
-    def __init__(self, base_encoder, dim=256, mlp_dim=4096, 
+    def __init__(self, base_encoder, dim=256, mlp_dim=4096, T=1.0,
         decoder_embed_dim=512, decoder_depth=8, decoder_num_heads=16, 
-        mlp_ratio=4., norm_layer=nn.LayerNorm, T=1.0, norm_pix_loss=False):
+        mlp_ratio=4., norm_layer=nn.LayerNorm, norm_pix_loss=False):
         """
         dim: feature dimension (default: 256)
         mlp_dim: hidden dimension in MLPs (default: 4096)
@@ -47,8 +47,6 @@ class MoCo(nn.Module):
         self.decoder_blocks = nn.ModuleList([
             Block(int(decoder_embed_dim), int(decoder_num_heads), mlp_ratio, qkv_bias=True, norm_layer=norm_layer)
             for i in range(decoder_depth)])
-        
-        print(1)
 
         self.decoder_norm = norm_layer(decoder_embed_dim)
         self.decoder_pred = nn.Linear(decoder_embed_dim, self.patch_size**2 * 3, bias=True) # decoder to patch
