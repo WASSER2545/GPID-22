@@ -1,0 +1,11 @@
+# Suggested compatible environment; not installed or runtime-verified in this change.
+# Install the matching torch/torchvision CUDA wheels for your machine.
+torch==2.2.2
+torchvision==0.17.2
+numpy==1.24.4
+Pillow==10.4.0
+PyYAML==6.0.2
+# MAGE's taming module imports Lightning and einops.
+pytorch-lightning==1.9.5
+torchmetrics==0.11.4
+einops==0.6.1

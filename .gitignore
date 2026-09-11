@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+outputs/
+checkpoints/
+data/
+third_party/
+
+# Local editor state and experiment artifacts
+.idea/
+.ipynb_checkpoints/
+.DS_Store
+runs/
+events.out.tfevents.*
